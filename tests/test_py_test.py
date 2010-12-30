@@ -16,7 +16,8 @@ class SetupFileCompare:
         return self
 
     def teardown_fixtures(self, args):
-       tmpdir_path,  trunknotesio = args
+        pass
+       #tmpdir_path,  trunknotesio = args
        #tmpdir.remove(rec=0, ignore_errors=True)
 
     def run(self):
