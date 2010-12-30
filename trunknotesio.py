@@ -187,8 +187,7 @@ Last Accessed: $lastaccessed
 Times Accessed: $timesaccessed
 Tags: $tags
 Metadata: $metadata
-$body
-"""
+$body"""
 	template = Template(template_string)
 	output_data = template.substitute(
 		title=input_data['title'],
@@ -200,8 +199,6 @@ $body
 		body=input_data['body'],
 	)
 
-	# remove extra line hack
-	output_data = output_data[:-1]
         # create the file
         with open(note_path.__str__(), 'w') as note_file:
             # write to the file
