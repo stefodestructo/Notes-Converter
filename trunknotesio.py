@@ -170,6 +170,21 @@ class TrunkNotesParser:
         else:
             return self.parse_content(input_data) 
 
+    def dump_note(self, input_data, note_path):
+        # convert the input_data dict to a string
+        # prolly should be it's own method
+
+        print note_path
+        print '\n\nFOO'
+        output_data = str()
+
+        output_data += input_data['title']
+
+        # create the file
+        with open(note_path.__str__(), 'w') as note_file:
+            # write to the file
+            note_file.write(output_data)
+
 class ParseError(Exception):
     def __init__(self, value = None):
         self.value = value
