@@ -11,14 +11,10 @@ class SetupFileCompare:
         self.tmpdir = request.getfuncargvalue("tmpdir")
 
     def setup_fixtures(self):
-        #self.trunknotesio = trunknotesio.TrunkNotesParser()
-        #return (self.tmpdir.dirpath(), self.trunknotesio)
         return self
 
     def teardown_fixtures(self, args):
         pass
-       #tmpdir_path,  trunknotesio = args
-       #tmpdir.remove(rec=0, ignore_errors=True)
 
     def run(self):
         pass
@@ -56,31 +52,12 @@ def test_setup_file_compare(setup_file_compare):
 
     output_note_directory = tmpdir.dirpath()
     output_note_file_name= input_note_file_name
-    #output_note_path = os.path.join(output_note_directory,
-    #        output_note_file_name)
+
     output_note_path = tmpdir.dirpath(input_note_file_name)
 
     # Run methods under test
     input_data = tnotes.parse_file(input_note_path)
     tnotes.dump_note(input_data, output_note_path)
     
-    # Open the input and output files
-    #try:
-    #    input_file = open(input_file_path)
-    #    output_file = open(output_file_path)
-    
-    # If there's a problem opening up either of the files under test, the test
-    # should fail
-    #except:
-    #   pass 
-
-    ## Read the input and output files    
-    #input_file_content = input_file.read() 
-    #output_file_content = output_file.read()
-    #
-    ## Close input and output files
-    #input_file.close()
-    #output_file.close()
-
     # Test that the input and output files have the same contents
     assert(filecmp.cmp(input_note_path, output_note_path.__str__()))

@@ -1,19 +1,37 @@
+# titleheader.py
+
 class TitleHeader():
 
     def __init__(self):
+        """
+        Insert doc string here
+        """
+
         self._prefix = 'Title'
         self._value = ''
 
 
     def get_prefix(self):
+        """
+        Insert doc string here
+        """
+
         return self._prefix
 
 
     def set_value(self, value):
+        """
+        Insert doc string here
+        """
+
         self._value = value
 
 
     def get_value(self):
+        """
+        Insert doc string here
+        """
+
         return self._value
 
     def read(self, header_string):
@@ -22,21 +40,8 @@ class TitleHeader():
         """
 
         prefix, value = header_string.split(': ', 1)
-
         self._value = value
-        # original method
-        #
-        #try:
-        #    prefix, value = input_string.split(': ', 1)
 
-        #    if prefix == 'Title':
-        #        return value
-
-        #    else:
-        #        raise ParseError(UNPARSABLE_TITLE_DATA)
-
-        #except ValueError:
-        #    raise ParseError(UNPARSABLE_TITLE_DATA)
 
     def write(self):
         header_template = 'Title: '

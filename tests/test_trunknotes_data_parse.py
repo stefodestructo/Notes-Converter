@@ -7,7 +7,6 @@
 #last accessed: 2010-11-16 14:15:05 -0500                           Done
 #times accessed: 17                                                 Done
 #tags: git, ffgga, fcc ff                                           Done
-#metadata: gpslongitude=-86.227834,gpslatitude=43.094873            Done 
 #metadata: gpslongitude=-85.617570,gpslatitude=42.280990      Done 
 
 import unittest
@@ -240,7 +239,6 @@ class TestTrunkNotesParserParseContent(TestTrunkNotesParser):
         TestTrunkNotesParser.setUp(self)
         self.target_method = self.trunk_notes_parser.parse_content
         self.expected_exception = trunknotesio.ParseErrors
-        #self.expected_exception_args = trunknotesio.UNPARSABLE_CONTENT_DATA
 
     def test_parse_content_returns_correct_data(self):
         """Test what gets returned by TrunkNotesParser.parse_content"""

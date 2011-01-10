@@ -1,20 +1,37 @@
 # timesaccessedheader.py
+
 class TimesAccessedHeader():
 
     def __init__(self):
+        """
+        Insert doc string here
+        """
+
         self._prefix = 'Times Accessed'
-        self._value = ''
+        self._value = 0
 
 
     def get_prefix(self):
+        """
+        Insert doc string here
+        """
+
         return self._prefix
 
 
     def set_value(self, value):
+        """
+        Insert doc string here
+        """
+
         self._value = int(value)
 
 
     def get_value(self):
+        """
+        Insert doc string here
+        """
+
         return self._value
 
     def read(self, header_string):
@@ -25,19 +42,6 @@ class TimesAccessedHeader():
         prefix, value = header_string.split(': ', 1)
 
         self._value = int(value)
-        # original method
-        #
-        #try:
-        #    prefix, value = input_string.split(': ', 1)
-
-        #    if prefix == 'Title':
-        #        return value
-
-        #    else:
-        #        raise ParseError(UNPARSABLE_TITLE_DATA)
-
-        #except ValueError:
-        #    raise ParseError(UNPARSABLE_TITLE_DATA)
 
     def write(self):
         header_template = 'Times Accessed: '
