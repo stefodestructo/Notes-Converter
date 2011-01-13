@@ -1,5 +1,5 @@
 *.pyc
-complete-dict
+complete-dict*
 pydiction.py
 run_test.py
 blah*

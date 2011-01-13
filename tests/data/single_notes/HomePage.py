@@ -4,12 +4,11 @@ time_format = "%Y-%m-%d %H:%M:%S"
 
 expected_data = {
         'title' : 'HomePage',
-        'timestamp' : datetime.datetime.strptime('2010-11-18 18:10:33',
-            time_format),
-        'last accessed' :  datetime.datetime.strptime('2010-11-19 20:02:28', time_format),
+        'timestamp' : '2010-11-18 18:10:33 -0500',
+        'last accessed' :  '2010-11-19 20:02:28 -0500',
         'times accessed' : 24,
-        'tags' : None,
-        'metadata' :None, 
+        'tags' : [''],
+        'metadata' : [''], 
         'body' : 
 """# Home Sweet Home
 

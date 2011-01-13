@@ -4,7 +4,23 @@
 import datetime 
 from string import join
 
+from tnotes.headers import titleheader
+from tnotes.headers import timesaccessedheader 
+from tnotes.headers import tagsheader
+from tnotes.headers import metadataheader
+from tnotes.headers import timestampheader
+from tnotes.headers import lastaccessedheader 
+
 class TrunkNotesParser:
+
+    def __init__(self):
+        
+        self.title_header = titleheader.TitleHeader()
+        self.times_accessed_header = timesaccessedheader.TimesAccessedHeader()
+        self.tags_header = tagsheader.TagsHeader()
+        self.metadata_header = metadataheader.MetadataHeader()
+        self.timestamp_header = timestampheader.TimestampHeader()
+        self.last_accessed_header = lastaccessedheader.LastAccessedHeader()
     
     time_format = "%Y-%m-%d %H:%M:%S"
 
@@ -118,35 +134,22 @@ class TrunkNotesParser:
 
         output_dict = dict()
         
-        try:
-            output_dict['title'] = self.get_title(metadata[0])
-        except ParseError as exception:
-            errors.append(exception.value)
-        
-        try:
-            output_dict['timestamp'] = self.get_time_stamp(metadata[1])
-        except ParseError as exception:
-            errors.append(exception.value)
+        self.title_header.read(metadata[0])
+        output_dict['title'] = self.title_header.get_value()
+       
+        self.timestamp_header.read(metadata[1])
+        output_dict['timestamp'] = self.timestamp_header.get_value() 
 
-        try:
-            output_dict['last accessed'] = self.get_last_accessed(metadata[2])
-        except ParseError as exception:
-            errors.append(exception.value)
-
-        try:
-            output_dict['times accessed'] = self.get_times_accessed(metadata[3])
-        except ParseError as exception:
-            errors.append(exception.value)
-
-        try:
-            output_dict['tags'] = self.get_tags(metadata[4])
-        except ParseError as exception:
-            errors.append(exception.value)
-
-        try:
-            output_dict['metadata'] = self.get_metadata(metadata[5])
-        except ParseError as exception:
-            errors.append(exception.value)
+        self.last_accessed_header.read(metadata[2])
+        output_dict['last accessed'] = self.last_accessed_header.get_value()
+    
+        self.times_accessed_header.read(metadata[3])
+        output_dict['times accessed'] = self.times_accessed_header.get_value()
+    
+        self.tags_header.read(metadata[4])
+        output_dict['tags'] = self.tags_header.get_value()
+        self.metadata_header.read(metadata[5])
+        output_dict['metadata'] = self.metadata_header.get_value()
 
         # HACK it appears that the method I use the to form the body cuts out 
         # the last new line
@@ -176,11 +179,12 @@ class TrunkNotesParser:
 
 	from string import Template
 
-	if input_data['metadata'] == None:
+	if input_data['metadata'] == ['']:
 		input_data['metadata'] = '' 
 	
-	if input_data['tags'] == None:
+	if input_data['tags'] == ['']:
 		input_data['tags'] = ''	
+
 	template_string = """Title: $title
 Timestamp: $timestamp
 Last Accessed: $lastaccessed
@@ -191,8 +195,8 @@ $body"""
 	template = Template(template_string)
 	output_data = template.substitute(
 		title=input_data['title'],
-		timestamp=str(input_data['timestamp']) + ' -0500',
-		lastaccessed=str(input_data['last accessed']) + ' -0500',
+		timestamp=input_data['timestamp'],
+		lastaccessed=input_data['last accessed'],
 		timesaccessed=input_data['times accessed'],
 		tags=input_data['tags'],
 		metadata=input_data['metadata'],

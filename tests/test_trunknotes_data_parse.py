@@ -297,35 +297,35 @@ Metadata: gpslongitude=-85.617570,gpslatitude=42.280990
         self.assertEqual(self.target_method(input_data)['body'], 
             expected_returned_data['body'])
 
-    def test_parse_content_raises_exception_missing_title_entry(self):
-        """Does parse_content ParseErrors get raised when title entry is missing"""
-
-        input_data = '''Timestamp: 2010-11-16 14:14:48 -0500
-Last accessed: 2010-11-16 14:15:05 -0500
-Times accessed: 17
-Tags: git, ffgga, fcc ff
-Metadata: gpslongitude=-85.617570,gpslatitude=42.280990
-# Home Sweet Home
-
-## Computer Notes
-[[GIT]]
-
-
-## Gaming
-[[WiiNotes]]
-## Projects
-[[ZimToTrunkNotesSyncScript]]
-
-## Random
-[[DownloadList]]
-
-'''
-        expected_exception_args = [trunknotesio.UNPARSABLE_TITLE_DATA,
-                trunknotesio.UNPARSABLE_TIMESTAMP_DATA,
-                trunknotesio.UNPARSABLE_LAST_ACCESSED_DATA,
-                trunknotesio.UNPARSABLE_TIMES_ACCESSED_DATA,
-                trunknotesio.UNPARSABLE_TAGS_DATA,
-                trunknotesio.UNPARSABLE_METADATA_DATA,
-                ]
-        self.assert_raises_plus_plus(self.expected_exception,
-                expected_exception_args, self.target_method, input_data)
+#    def test_parse_content_raises_exception_missing_title_entry(self):
+#        """Does parse_content ParseErrors get raised when title entry is missing"""
+#
+#        input_data = '''Timestamp: 2010-11-16 14:14:48 -0500
+#Last accessed: 2010-11-16 14:15:05 -0500
+#Times accessed: 17
+#Tags: git, ffgga, fcc ff
+#Metadata: gpslongitude=-85.617570,gpslatitude=42.280990
+## Home Sweet Home
+#
+### Computer Notes
+#[[GIT]]
+#
+#
+### Gaming
+#[[WiiNotes]]
+### Projects
+#[[ZimToTrunkNotesSyncScript]]
+#
+### Random
+#[[DownloadList]]
+#
+#'''
+#        expected_exception_args = [trunknotesio.UNPARSABLE_TITLE_DATA,
+#                trunknotesio.UNPARSABLE_TIMESTAMP_DATA,
+#                trunknotesio.UNPARSABLE_LAST_ACCESSED_DATA,
+#                trunknotesio.UNPARSABLE_TIMES_ACCESSED_DATA,
+#                trunknotesio.UNPARSABLE_TAGS_DATA,
+#                trunknotesio.UNPARSABLE_METADATA_DATA,
+#                ]
+#        self.assert_raises_plus_plus(self.expected_exception,
+#                expected_exception_args, self.target_method, input_data)

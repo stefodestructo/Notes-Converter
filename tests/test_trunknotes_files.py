@@ -52,19 +52,19 @@ def test_files():
         print "foo"
         yield _file, target_path, target_dict
 
-@tools.raises(trunknotesio.ParseError)
-def test_nonexisting_file_exception():
-
-
-    target_path = 'tests/data/single_notes/no_one_home'
-
-    trunk_notes_parser = trunknotesio.TrunkNotesParser()
-    trunk_notes_parser.parse_file(target_path)
-    
-
-@tools.raises(trunknotesio.ParseError)
-def test_file_is_directory_exception():
-    target_path = 'tests/data/single_notes/'
-
-    trunk_notes_parser = trunknotesio.TrunkNotesParser()
-    trunk_notes_parser.parse_file(target_path)
+#@tools.raises(trunknotesio.ParseError)
+#def test_nonexisting_file_exception():
+#
+#
+#    target_path = 'tests/data/single_notes/no_one_home'
+#
+#    trunk_notes_parser = trunknotesio.TrunkNotesParser()
+#    trunk_notes_parser.parse_file(target_path)
+#    
+#
+#@tools.raises(trunknotesio.ParseError)
+#def test_file_is_directory_exception():
+#    target_path = 'tests/data/single_notes/'
+#
+#    trunk_notes_parser = trunknotesio.TrunkNotesParser()
+#    trunk_notes_parser.parse_file(target_path)
