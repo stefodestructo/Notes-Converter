@@ -177,31 +177,14 @@ class TrunkNotesParser:
         # convert the input_data dict to a string
         # prolly should be it's own method
 
-	from string import Template
+        headers = self.title_header.write() + '\n' 
+        headers += self.timestamp_header.write() + '\n'
+        headers += self.last_accessed_header.write() + '\n'
+        headers += self.times_accessed_header.write() + '\n'
+        headers += self.tags_header.write() + '\n'
+        headers += self.metadata_header.write() +'\n'
 
-	if input_data['metadata'] == ['']:
-		input_data['metadata'] = '' 
-	
-	if input_data['tags'] == ['']:
-		input_data['tags'] = ''	
-
-	template_string = """Title: $title
-Timestamp: $timestamp
-Last Accessed: $lastaccessed
-Times Accessed: $timesaccessed
-Tags: $tags
-Metadata: $metadata
-$body"""
-	template = Template(template_string)
-	output_data = template.substitute(
-		title=input_data['title'],
-		timestamp=input_data['timestamp'],
-		lastaccessed=input_data['last accessed'],
-		timesaccessed=input_data['times accessed'],
-		tags=input_data['tags'],
-		metadata=input_data['metadata'],
-		body=input_data['body'],
-	)
+        output_data = headers +input_data['body'] 
 
         # create the file
         with open(note_path.__str__(), 'w') as note_file:
