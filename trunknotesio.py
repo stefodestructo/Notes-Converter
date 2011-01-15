@@ -21,6 +21,8 @@ class TrunkNotesParser:
         self.metadata_header = metadataheader.MetadataHeader()
         self.timestamp_header = timestampheader.TimestampHeader()
         self.last_accessed_header = lastaccessedheader.LastAccessedHeader()
+
+        self.body = ''
     
     time_format = "%Y-%m-%d %H:%M:%S"
 
@@ -36,7 +38,6 @@ class TrunkNotesParser:
 
         except ValueError:
             raise ParseError(UNPARSABLE_TITLE_DATA)
-
 
 
 
@@ -132,31 +133,19 @@ class TrunkNotesParser:
         metadata = input_data.splitlines()[0:6]
         content = input_data.splitlines()[6:]
 
-        output_dict = dict()
-        
         self.title_header.read(metadata[0])
-        output_dict['title'] = self.title_header.get_value()
-       
         self.timestamp_header.read(metadata[1])
-        output_dict['timestamp'] = self.timestamp_header.get_value() 
-
         self.last_accessed_header.read(metadata[2])
-        output_dict['last accessed'] = self.last_accessed_header.get_value()
-    
         self.times_accessed_header.read(metadata[3])
-        output_dict['times accessed'] = self.times_accessed_header.get_value()
-    
         self.tags_header.read(metadata[4])
-        output_dict['tags'] = self.tags_header.get_value()
         self.metadata_header.read(metadata[5])
-        output_dict['metadata'] = self.metadata_header.get_value()
 
         # HACK it appears that the method I use the to form the body cuts out 
         # the last new line
-        output_dict['body'] = join(content, '\n') + '\n'
+        self.body = join(content, '\n') + '\n'
+
         if len(errors) != 0:
             raise ParseErrors(errors)
-        return output_dict
 
     def parse_file(self, file_path):
         try:
@@ -173,7 +162,7 @@ class TrunkNotesParser:
         else:
             return self.parse_content(input_data) 
 
-    def dump_note(self, input_data, note_path):
+    def dump_note(self, note_path):
         # convert the input_data dict to a string
         # prolly should be it's own method
 
@@ -184,7 +173,7 @@ class TrunkNotesParser:
         headers += self.tags_header.write() + '\n'
         headers += self.metadata_header.write() +'\n'
 
-        output_data = headers +input_data['body'] 
+        output_data = headers + self.body 
 
         # create the file
         with open(note_path.__str__(), 'w') as note_file:

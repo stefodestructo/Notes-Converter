@@ -57,7 +57,9 @@ def test_setup_file_compare(setup_file_compare):
 
     # Run methods under test
     input_data = tnotes.parse_file(input_note_path)
-    tnotes.dump_note(input_data, output_note_path)
+
+    tnotes.dump_note(output_note_path)
+    #tnotes.dump_note(input_data, output_note_path)
     
     # Test that the input and output files have the same contents
     assert(filecmp.cmp(input_note_path, output_note_path.__str__()))
