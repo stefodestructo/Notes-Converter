@@ -1,7 +1,8 @@
-Merge temp_branch with master branch
-Delete temp_branch
-Write the tnotes header class
+Merge temp_branch with master branch - DONE
+Delete temp_branch - DONE
+Write the tnotes header class - DONE
 Write the tnotes body class
+Write TrunkNoteClass
 Write code to parse zim note files
 Write a classes to convert tnotes objects zim and tnotes objects
 Add sanity checking to all classes
