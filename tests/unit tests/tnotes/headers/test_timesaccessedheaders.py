@@ -21,7 +21,7 @@ def test_times_accessed_header_write_method():
 
     
     times_accessed_header_value = 42
-    expected_output = 'Times Accessed: 42'
+    expected_output = 'Times Accessed: 42\n'
 
     times_accessed_header = timesaccessedheader.TimesAccessedHeader()
     

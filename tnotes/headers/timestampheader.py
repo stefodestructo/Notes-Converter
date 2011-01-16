@@ -46,4 +46,5 @@ class TimestampHeader():
     def write(self):
         header_template = 'Timestamp: '
 
-        return header_template + self._value
+        return header_template + self._value + '\n'
+        

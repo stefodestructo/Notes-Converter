@@ -20,7 +20,7 @@ def test_timestamp_header_read_method():
 def test_timestamp_header_write_method():
     
     timestamp_header_value = '2010-12-29 23:43:58 -0500'
-    expected_output = 'Timestamp: 2010-12-29 23:43:58 -0500'
+    expected_output = 'Timestamp: 2010-12-29 23:43:58 -0500\n'
 
     timestamp_header = timestampheader.TimestampHeader()
     

@@ -46,4 +46,4 @@ class TimesAccessedHeader():
     def write(self):
         header_template = 'Times Accessed: '
 
-        return header_template + str(self._value)
+        return header_template + str(self._value) + '\n'

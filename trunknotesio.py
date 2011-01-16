@@ -70,12 +70,12 @@ class TrunkNotesParser:
         Insert doctsring here
         """
 
-        headers = self.title_header.write() + '\n' 
-        headers += self.timestamp_header.write() + '\n'
-        headers += self.last_accessed_header.write() + '\n'
-        headers += self.times_accessed_header.write() + '\n'
-        headers += self.tags_header.write() + '\n'
-        headers += self.metadata_header.write() +'\n'
+        headers = self.title_header.write() 
+        headers += self.timestamp_header.write()
+        headers += self.last_accessed_header.write() 
+        headers += self.times_accessed_header.write()
+        headers += self.tags_header.write()
+        headers += self.metadata_header.write() 
 
         output_data = headers + self.body 
 

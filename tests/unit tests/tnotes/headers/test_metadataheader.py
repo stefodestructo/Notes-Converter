@@ -23,7 +23,7 @@ def test_metadata_header_write_method():
 
     
     metadata_header_value = ['gpslongitude=-85.617570', 'gpslatitude=42.280990']
-    expected_output = 'Metadata: gpslongitude=-85.617570,gpslatitude=42.280990'
+    expected_output = 'Metadata: gpslongitude=-85.617570,gpslatitude=42.280990\n'
 
     metadata_header = metadataheader.MetadataHeader()
     

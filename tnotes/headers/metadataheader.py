@@ -62,4 +62,4 @@ class MetadataHeader():
 
         raw_tags = raw_tags + self._value[-1]
 
-        return header_template + raw_tags
+        return header_template + raw_tags + '\n'

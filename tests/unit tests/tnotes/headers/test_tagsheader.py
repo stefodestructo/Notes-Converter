@@ -20,7 +20,7 @@ def test_tags_header_read_method():
 def test_tags_header_write_method():
     
     tags_header_value = ['epic', 'lol', 'foo', 'bar']
-    expected_output = 'Tags: epic, lol, foo, bar'
+    expected_output = 'Tags: epic, lol, foo, bar\n'
 
     tags_header = tagsheader.TagsHeader()
     

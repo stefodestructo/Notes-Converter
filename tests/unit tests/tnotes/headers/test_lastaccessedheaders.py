@@ -22,7 +22,7 @@ def test_last_accessed_header_write_method():
 
     
     last_accessed_header_value = '2010-12-29 23:43:58 -0500'
-    expected_output = 'Last Accessed: 2010-12-29 23:43:58 -0500'
+    expected_output = 'Last Accessed: 2010-12-29 23:43:58 -0500\n'
 
     last_accessed_header = lastaccessedheader.LastAccessedHeader()
     

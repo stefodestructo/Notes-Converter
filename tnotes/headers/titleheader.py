@@ -46,4 +46,4 @@ class TitleHeader():
     def write(self):
         header_template = 'Title: '
 
-        return header_template + self._value
+        return header_template + self._value + '\n' 

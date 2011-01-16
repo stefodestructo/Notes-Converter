@@ -46,4 +46,4 @@ class LastAccessedHeader():
     def write(self):
         header_template = 'Last Accessed: '
 
-        return header_template + self._value
+        return header_template + self._value + '\n'

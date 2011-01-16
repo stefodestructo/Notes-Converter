@@ -20,7 +20,7 @@ def test_title_header_read_method():
 def test_title_header_write_method():
     
     title_header_value = 'Hello World'
-    expected_output = 'Title: Hello World'
+    expected_output = 'Title: Hello World\n'
 
     title_header = titleheader.TitleHeader()
     
