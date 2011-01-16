@@ -11,12 +11,14 @@ from tnotes.headers import timestampheader
 from tnotes.headers import lastaccessedheader 
 
 class TrunkNotesParser:
+    """
+    Insert docstring here
+    """
 
     def __init__(self):
         """
         Insert docstring here
         """
-
         self.title_header = titleheader.TitleHeader()
         self.times_accessed_header = timesaccessedheader.TimesAccessedHeader()
         self.tags_header = tagsheader.TagsHeader()
@@ -28,7 +30,7 @@ class TrunkNotesParser:
     
     def parse_content(self, input_data):
         """
-        Insert Docstring here
+        Insert docstring here
         """
         metadata = input_data.splitlines()[0:6]
         content = input_data.splitlines()[6:]
@@ -44,7 +46,6 @@ class TrunkNotesParser:
         # the last new line
         self.body = join(content, '\n') + '\n'
 
-
     def parse_file(self, file_path):
         """
         Insert docstring here
@@ -54,22 +55,21 @@ class TrunkNotesParser:
             input_data = note_file.read()
             note_file.close()
         except IOError as errno: 
-            pass
             # No such directory Error
-            #if errno.args[0] == 2:
-            #    raise ParseError
+            if errno.args[0] == 2:
+                # will be replace once code is ready for input checkecking
+                pass
             ## is a directory ERROR
-            #if errno.args[0] == 21:
-            #    raise ParseError
-        else:
+            if errno.args[0] == 21:
+                # will be replace once code is ready for input checkecking
+                pass
+        else:   
             return self.parse_content(input_data) 
-
 
     def dump_note(self, note_path):
         """
-        Insert doctsring here
+        Insert docstring here
         """
-
         headers = self.title_header.write() 
         headers += self.timestamp_header.write()
         headers += self.last_accessed_header.write() 
@@ -83,4 +83,3 @@ class TrunkNotesParser:
         with open(note_path.__str__(), 'w') as note_file:
             # write to the file
             note_file.write(output_data)
-
