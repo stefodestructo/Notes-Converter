@@ -54,12 +54,13 @@ class TrunkNotesParser:
             input_data = note_file.read()
             note_file.close()
         except IOError as errno: 
+            pass
             # No such directory Error
-            if errno.args[0] == 2:
-                raise ParseError
-            # is a directory ERROR
-            if errno.args[0] == 21:
-                raise ParseError
+            #if errno.args[0] == 2:
+            #    raise ParseError
+            ## is a directory ERROR
+            #if errno.args[0] == 21:
+            #    raise ParseError
         else:
             return self.parse_content(input_data) 
 

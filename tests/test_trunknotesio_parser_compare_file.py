@@ -35,7 +35,7 @@ def pytest_funcarg__setup_file_compare(request):
             scope = 'function'
             )
 
-def test_setup_file_compare(setup_file_compare):
+def test_file_compare(setup_file_compare):
     """
     Parse a note file, send the parsed data to the save method and compare the
     file that was read to what was saved to a temporary directory.
