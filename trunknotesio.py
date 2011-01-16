@@ -3,12 +3,13 @@
 
 from string import join
 
-from tnotes.headers import titleheader
-from tnotes.headers import timesaccessedheader 
-from tnotes.headers import tagsheader
-from tnotes.headers import metadataheader
-from tnotes.headers import timestampheader
-from tnotes.headers import lastaccessedheader 
+from tnotes.headers.headers import Headers
+from tnotes.headers.titleheader import TitleHeader
+from tnotes.headers.timesaccessedheader import TimesAccessedHeader
+from tnotes.headers.tagsheader import TagsHeader
+from tnotes.headers.metadataheader import MetadataHeader
+from tnotes.headers.timestampheader import TimestampHeader
+from tnotes.headers.lastaccessedheader import LastAccessedHeader 
 
 class TrunkNotesParser:
     """
@@ -19,32 +20,20 @@ class TrunkNotesParser:
         """
         Insert docstring here
         """
-        self.title_header = titleheader.TitleHeader()
-        self.times_accessed_header = timesaccessedheader.TimesAccessedHeader()
-        self.tags_header = tagsheader.TagsHeader()
-        self.metadata_header = metadataheader.MetadataHeader()
-        self.timestamp_header = timestampheader.TimestampHeader()
-        self.last_accessed_header = lastaccessedheader.LastAccessedHeader()
-
+        self.headers = Headers(TitleHeader(), TimestampHeader(),
+                LastAccessedHeader(), TimesAccessedHeader(), TagsHeader(),
+                MetadataHeader())
         self.body = ''
     
     def parse_content(self, input_data):
         """
         Insert docstring here
         """
-        metadata = input_data.splitlines()[0:6]
-        content = input_data.splitlines()[6:]
+        metadata = join(input_data.splitlines()[0:6], '\n')
+        self.body = join(input_data.splitlines(True)[6:], '')
+        
+        self.headers.read(metadata)
 
-        self.title_header.read(metadata[0])
-        self.timestamp_header.read(metadata[1])
-        self.last_accessed_header.read(metadata[2])
-        self.times_accessed_header.read(metadata[3])
-        self.tags_header.read(metadata[4])
-        self.metadata_header.read(metadata[5])
-
-        # HACK it appears that the method I use the to form the body cuts out 
-        # the last new line
-        self.body = join(content, '\n') + '\n'
 
     def parse_file(self, file_path):
         """
@@ -70,14 +59,7 @@ class TrunkNotesParser:
         """
         Insert docstring here
         """
-        headers = self.title_header.write() 
-        headers += self.timestamp_header.write()
-        headers += self.last_accessed_header.write() 
-        headers += self.times_accessed_header.write()
-        headers += self.tags_header.write()
-        headers += self.metadata_header.write() 
-
-        output_data = headers + self.body 
+        output_data = self.headers.write() + self.body 
 
         # create the file
         with open(note_path.__str__(), 'w') as note_file:
