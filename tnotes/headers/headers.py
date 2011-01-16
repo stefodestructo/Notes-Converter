@@ -40,3 +40,14 @@ class Headers:
         self.tags_header.read(input_string.splitlines(False)[4])
         self.metadata_header.read(input_string.splitlines(False)[5])
 
+    def write(self):
+        """
+        Insert docstring here
+        """
+
+        return self.title_header.write() + self.timestamp_header.write() + \
+                self.last_accessed_header.write() + \
+                self.times_accessed_header.write() + self.tags_header.write() \
+                +self.metadata_header.write()
+
+
