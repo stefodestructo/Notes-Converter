@@ -1,5 +1,6 @@
 # tagsheader.py
 
+
 class TagsHeader():
 
     def __init__(self):
@@ -10,7 +11,6 @@ class TagsHeader():
         self._prefix = 'Tags'
         self._value = []
 
-
     def get_prefix(self):
         """
         Insert doc string here
@@ -18,14 +18,12 @@ class TagsHeader():
 
         return self._prefix
 
-
     def set_value(self, value):
         """
         Insert doc string here
         """
 
         self._value = value
-
 
     def get_value(self):
         """
@@ -41,10 +39,6 @@ class TagsHeader():
         prefix, raw_tags = header_string.split(': ', 1)
 
         value = raw_tags.lstrip().split(', ')
-        #if tags == ['']:
-        #    return None
-        #else:
-        #    return tags
 
         self._value = value
 
@@ -56,7 +50,7 @@ class TagsHeader():
         header_template = 'Tags: '
 
         raw_tags = ''
-        
+
         for tag in self._value[:-1]:
             raw_tags = raw_tags + tag + ', '
 

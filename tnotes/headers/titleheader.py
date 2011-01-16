@@ -1,5 +1,6 @@
 # titleheader.py
 
+
 class TitleHeader():
 
     def __init__(self):
@@ -10,7 +11,6 @@ class TitleHeader():
         self._prefix = 'Title'
         self._value = ''
 
-
     def get_prefix(self):
         """
         Insert doc string here
@@ -18,14 +18,12 @@ class TitleHeader():
 
         return self._prefix
 
-
     def set_value(self, value):
         """
         Insert doc string here
         """
 
         self._value = value
-
 
     def get_value(self):
         """
@@ -42,8 +40,7 @@ class TitleHeader():
         prefix, value = header_string.split(': ', 1)
         self._value = value
 
-
     def write(self):
         header_template = 'Title: '
 
-        return header_template + self._value + '\n' 
+        return header_template + self._value + '\n'

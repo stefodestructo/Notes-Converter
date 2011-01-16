@@ -1,5 +1,6 @@
 # timesaccessedheader.py
 
+
 class TimesAccessedHeader():
 
     def __init__(self):
@@ -10,7 +11,6 @@ class TimesAccessedHeader():
         self._prefix = 'Times Accessed'
         self._value = 0
 
-
     def get_prefix(self):
         """
         Insert doc string here
@@ -18,14 +18,12 @@ class TimesAccessedHeader():
 
         return self._prefix
 
-
     def set_value(self, value):
         """
         Insert doc string here
         """
 
         self._value = int(value)
-
 
     def get_value(self):
         """

@@ -9,7 +9,8 @@ from tnotes.headers.timesaccessedheader import TimesAccessedHeader
 from tnotes.headers.tagsheader import TagsHeader
 from tnotes.headers.metadataheader import MetadataHeader
 from tnotes.headers.timestampheader import TimestampHeader
-from tnotes.headers.lastaccessedheader import LastAccessedHeader 
+from tnotes.headers.lastaccessedheader import LastAccessedHeader
+
 
 class TrunkNotesParser:
     """
@@ -24,16 +25,15 @@ class TrunkNotesParser:
                 LastAccessedHeader(), TimesAccessedHeader(), TagsHeader(),
                 MetadataHeader())
         self.body = ''
-    
+
     def parse_content(self, input_data):
         """
         Insert docstring here
         """
         metadata = join(input_data.splitlines()[0:6], '\n')
         self.body = join(input_data.splitlines(True)[6:], '')
-        
-        self.headers.read(metadata)
 
+        self.headers.read(metadata)
 
     def parse_file(self, file_path):
         """
@@ -43,7 +43,7 @@ class TrunkNotesParser:
             note_file = open(file_path)
             input_data = note_file.read()
             note_file.close()
-        except IOError as errno: 
+        except IOError as errno:
             # No such directory Error
             if errno.args[0] == 2:
                 # will be replace once code is ready for input checkecking
@@ -52,14 +52,14 @@ class TrunkNotesParser:
             if errno.args[0] == 21:
                 # will be replace once code is ready for input checkecking
                 pass
-        else:   
-            return self.parse_content(input_data) 
+        else:
+            return self.parse_content(input_data)
 
     def dump_note(self, note_path):
         """
         Insert docstring here
         """
-        output_data = self.headers.write() + self.body 
+        output_data = self.headers.write() + self.body
 
         # create the file
         with open(note_path.__str__(), 'w') as note_file:

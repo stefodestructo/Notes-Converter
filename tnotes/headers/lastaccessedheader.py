@@ -1,5 +1,6 @@
 # lastaccessed.py
 
+
 class LastAccessedHeader():
 
     def __init__(self):
@@ -10,7 +11,6 @@ class LastAccessedHeader():
         self._prefix = 'Last Accessed'
         self._value = ''
 
-
     def get_prefix(self):
         """
         Insert doc string here
@@ -18,14 +18,12 @@ class LastAccessedHeader():
 
         return self._prefix
 
-
     def set_value(self, value):
         """
         Insert doc string here
         """
 
         self._value = value
-
 
     def get_value(self):
         """
@@ -41,7 +39,6 @@ class LastAccessedHeader():
 
         prefix, value = header_string.split(': ', 1)
         self._value = value
-
 
     def write(self):
         header_template = 'Last Accessed: '

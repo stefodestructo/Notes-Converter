@@ -2,6 +2,7 @@
 from tnotes.headers.headers import Headers
 from mock import Mock
 
+
 def test_headers_get_prefixes():
     """
     Insert docstring here
@@ -11,7 +12,7 @@ def test_headers_get_prefixes():
 
     # Instantiate mock objects
     title_header = Mock(['get_prefix'], name='title_header')
-    timestamp_header = Mock(['get_prefix'], name='timestamp_header')  
+    timestamp_header = Mock(['get_prefix'], name='timestamp_header')
     last_accessed_header = Mock(['get_prefix'], name='last_accessed_header')
     times_accessed_header = Mock(['get_prefix'], name='times_accessed_header')
     tags_header = Mock(['get_prefix'], name='tags_header')
@@ -26,10 +27,11 @@ def test_headers_get_prefixes():
     metadata_header.get_prefix.return_value = 'Metadata'
 
     # Instantiate object under tests (headers)
-    headers = Headers(title_header, timestamp_header, last_accessed_header, 
+    headers = Headers(title_header, timestamp_header, last_accessed_header,
             times_accessed_header, tags_header, metadata_header)
 
     assert(headers.get_prefixes() == expected_prefixes)
+
 
 def test_headers_read():
     """
@@ -51,14 +53,14 @@ Metadata:
     times_accessed_header = Mock(['read'], name='times_accessed_header')
     tags_header = Mock(['read'], name='tags_header')
     metadata_header = Mock(['read'], name='metadata_header')
-    
+
     # Instantiate object under tests (headers)
-    headers = Headers(title_header, timestamp_header, last_accessed_header, 
+    headers = Headers(title_header, timestamp_header, last_accessed_header,
             times_accessed_header, tags_header, metadata_header)
 
     # Call method under test
     headers.read(sample_input_data)
-    
+
     # Test that the headers' read was called once and
     # That the parameters they received are correct
     title_header.read.assert_called_once_with('Title: HelloWorld')
@@ -69,6 +71,7 @@ Metadata:
     times_accessed_header.read.assert_called_once_with('Times Accessed: 24')
     tags_header.read.assert_called_once_with('Tags:')
     metadata_header.read.assert_called_once_with('Metadata:')
+
 
 def test_headers_write():
     """
@@ -86,7 +89,7 @@ Metadata:
 
     # Instantiate mock objects
     title_header = Mock(['write'], name='title_header')
-    timestamp_header = Mock(['write'], name='timestamp_header')  
+    timestamp_header = Mock(['write'], name='timestamp_header')
     last_accessed_header = Mock(['write'], name='last_accessed_header')
     times_accessed_header = Mock(['write'], name='times_accessed_header')
     tags_header = Mock(['write'], name='tags_header')
@@ -103,9 +106,8 @@ Metadata:
     metadata_header.write.return_value = 'Metadata:\n'
 
     # Instantiate object under tests (headers)
-    headers = Headers(title_header, timestamp_header, last_accessed_header, 
+    headers = Headers(title_header, timestamp_header, last_accessed_header,
             times_accessed_header, tags_header, metadata_header)
 
     # Test that headers.write() returns the correct string
     assert(headers.write() == expected_output_data)
-

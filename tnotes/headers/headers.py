@@ -1,5 +1,6 @@
 # headers.py
 
+
 class Headers:
     """
     Insert docstring here
@@ -48,6 +49,4 @@ class Headers:
         return self.title_header.write() + self.timestamp_header.write() + \
                 self.last_accessed_header.write() + \
                 self.times_accessed_header.write() + self.tags_header.write() \
-                +self.metadata_header.write()
-
-
+                + self.metadata_header.write()
