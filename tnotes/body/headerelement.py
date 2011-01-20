@@ -1,7 +1,7 @@
-#bodyheader.py
+# headerelement.py
 
 
-class BodyHeader:
+class HeaderElement:
     """
     Insert docstring here
     """
