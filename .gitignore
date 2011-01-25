@@ -1,4 +1,6 @@
 *.pyc
+html
+.figleaf
 complete-dict*
 pydiction.py
 run_test.py
