@@ -1,7 +1,7 @@
-# headerelement.py
+# headernode.py
 
 
-class HeaderElement:
+class HeaderNode:
     """
     Insert docstring here
     """

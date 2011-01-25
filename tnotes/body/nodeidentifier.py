@@ -1,20 +1,20 @@
-# elementidentifier.py
+# nodeidentifier.py
 
-class ElementIdentifier:
+class NodeIdentifier:
     """
     insert docstring here
     """
 
-    def __init__(self, header_element, text_element):
+    def __init__(self, header_node, text_node):
         """
         insert docstring here
         """
-        self.HeaderElement = header_element
-        self.TextElement = text_element
+        self.HeaderNode = header_node
+        self.TextNode = text_node
 
     def identify(self, element_string):
         """
         Insert docstring here
         """
         if element_string.startswith('#'):
-            return self.HeaderElement.__name__
+            return self.HeaderNode.__name__

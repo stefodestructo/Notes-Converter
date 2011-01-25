@@ -9,13 +9,13 @@ class Body:
         """
         Insert docstring here
         """
-        self._elements = []
+        self._nodes = []
 
-    def append(self, element):
+    def append(self, node):
         """
         Insert docstring here
         """
-        self._elements.append(element)
+        self._nodes.append(node)
 
     def write(self):
        """
@@ -24,8 +24,8 @@ class Body:
        output_string = ''
 
        # Add a newline character to all but the last element
-       for element in  self._elements[:-1]:
-           output_string += element.write() + '\n'
-       output_string += self._elements[-1].write()
+       for node in  self._nodes[:-1]:
+           output_string += node.write() + '\n'
+       output_string += self._nodes[-1].write()
 
        return output_string

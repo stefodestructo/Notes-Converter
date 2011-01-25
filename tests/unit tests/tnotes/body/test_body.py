@@ -3,7 +3,6 @@
 from mock import Mock
 
 from tnotes.body.body import Body
-#from tnotes.body.bodyheader import BodyHeader
 
 
 def test_body_write_body_header():
@@ -32,15 +31,15 @@ def test_body_write_body_header():
 """
     body = Body()
     
-    # Create a HeaderElement mock object
-    header_element1 = Mock(['write'], name='header_element1')
-    header_element1.write.return_value = '#Hello World1'
+    # Create a HeaderNode mock object
+    header_node1 = Mock(['write'], name='header_node1')
+    header_node1.write.return_value = '#Hello World1'
 
-    header_element2 = Mock(['write'], name='header_element2')
-    header_element2.write.return_value = '##Hello World2'
+    header_node2 = Mock(['write'], name='header_node2')
+    header_node2.write.return_value = '##Hello World2'
 
-    body.append(header_element1)
-    body.append(header_element2)
+    body.append(header_node1)
+    body.append(header_node2)
 
     assert(body.write() == expected_output)
    
@@ -55,13 +54,13 @@ This is just a test\
 
     body = Body()
 
-    # Create a HeaderElement mock object
-    header_element = Mock(['write'], name='header_element')
-    header_element.write.return_value = '#Hello World'
+    # Create a HeaderNode mock object
+    header_node = Mock(['write'], name='header_node')
+    header_node.write.return_value = '#Hello World'
 
-    # Create a TextElement mock object
-    text_element = Mock(['write'], name='text_element')
-    text_element.write.return_value = 'This is just a test'
+    # Create a TextNode mock object
+    text_node = Mock(['write'], name='text_node')
+    text_node.write.return_value = 'This is just a test'
 
-    body.append(header_element)
-    body.append(text_element)
+    body.append(header_node)
+    body.append(text_node)

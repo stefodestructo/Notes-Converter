@@ -1,7 +1,7 @@
-# textelement.py
+# textnode.py
 
 
-class TextElement:
+class TextNode:
     """
     Insert docstring here
     """
